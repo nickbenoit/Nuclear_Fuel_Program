@@ -41,6 +41,16 @@ void setup() {
   armmotor.attach(6, 1000, 2000);     // arm motor pin#, pulse time for 0, pulse time for 180
 }
 
+// Toggles a boolean value true->false or false->true
+void toggle(boolean value) {
+  if (value) {
+    value == false;
+  }
+  else {
+    value == true;
+  }
+}
+
 // Stop the motors
 void stopRobot() {
   leftmotor.write(STOP);
@@ -83,7 +93,7 @@ void moveArm(int degree) {
     delay(20);  
   }
   else if (moveAngle == 0) {
-    hasLoad = true;
+    toggle(hasLoad);
   }
 }
 
@@ -134,7 +144,7 @@ void drive() {
   // If both photoresistors are on the line
   else if ((stateRight == 0) && (stateLeft == 0)) {
     stopRobot();
-    drivenRoute = true;
+    toggle(drivenRoute);
   }
 }
 
